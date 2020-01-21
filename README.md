@@ -39,6 +39,9 @@ The Dockerfile is build with multi stage, the first stage is based on ubuntu to 
     # Use 'docker cp' to copy the whole artifacts folder from container
     docker cp container_name:/home/builder/packages/builder/x86_64 .
 
+    # In case you build on aarch64 OS
+    docker cp container_name:/home/builder/packages/builder/aarch64 .
+
 ## Releases
 
 See the [releases page](https://github.com/puxos/alpine-pkg-glibc/releases) for the latest download links. If you are using tools like `localedef` you will need the `glibc-bin` and `glibc-i18n` packages in addition to the `glibc` package.
