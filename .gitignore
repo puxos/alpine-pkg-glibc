@@ -1,5 +1,8 @@
+.DS_Store
 *.rsa
 *.pkg*
+*.apk
+*.tar.gz
 src
 pkg
 packages
