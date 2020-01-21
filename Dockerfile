@@ -8,13 +8,14 @@ FROM ubuntu:19.04 as glibc-builder
 ENV PREFIX_DIR="/usr/glibc-compat" \
 	GLIBC_VERSION="2.30"
 
-COPY scripts/sources.list /etc/apt/sources.list
-COPY configparams /glibc-build/configparams
+# install script
+COPY scripts /scripts
+RUN bash scripts/setup.sh
 
 RUN apt-get -q update && \
 	apt-get -qy install bison build-essential gawk gettext openssl python3 texinfo curl && \
     curl -LfsS https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/glibc-${GLIBC_VERSION}.tar.xz | tar xfJ - && \
-    mkdir -p /glibc-build && cd /glibc-build && \
+    cd /glibc-build && \
     /glibc-${GLIBC_VERSION}/configure \
         --prefix=${PREFIX_DIR} \
         --libdir=${PREFIX_DIR}/lib \

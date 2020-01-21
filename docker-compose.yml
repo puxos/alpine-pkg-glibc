@@ -9,6 +9,5 @@ services:
         - version=2.30
         - build=dev
     image: leadstec/glibc-builder:2.30
-    env_file: ../env/debug.env
     hostname: glibc-builder.local
     container_name: glibc-builder.local
